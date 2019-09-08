@@ -60,4 +60,9 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
+    {
+        path:'principal', 
+        loadChildren:
+        '../../pages/pagina-principal/pagina-principal.module#PaginaPrincipalModule'
+    }
 ];

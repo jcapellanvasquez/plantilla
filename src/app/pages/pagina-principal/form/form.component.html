@@ -1,0 +1,13 @@
+<form>
+    <div class="form-group">
+        <label class="control-form-label">Nombre:</label>
+        <input class="form-control" name="nombre" [(ngModel)]="nombre" type="text" placeholder="nombre...">
+    </div>
+
+    <div class="form-group">
+            <label class="control-form-label">Apellido:</label>
+            <input class="form-control" name="apellido" [(ngModel)]="apellido" type="text" placeholder="apellido...">
+        
+    </div>
+    <button class="btn btn-block btn-primary" (click)="add()">Guardar</button>
+</form>
