@@ -1,0 +1,7 @@
+{
+    "/api": {
+        "target": "http://localhost:80/backend/public/",
+        "secure": false,
+        "changeOrigin": true
+    }
+}

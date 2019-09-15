@@ -1,0 +1,35 @@
+<div class="cointainer">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-4">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title text-center">Login</h4>
+        </div>
+        <div class="card-body">
+          <div *ngIf="errorMsg" class="alert alert-info">
+            <p>{{errorMsg}}</p> 
+          </div>
+          <form [formGroup]="form" (ngSubmit)="authenticate()">
+            <div class="form-group">
+              <label class="form-label">Usuario:</label>
+              <input type="text" formControlName="usuario" class="form-control" placeholder="Digite su usuario">
+              <small 
+              class="text-danger"
+              *ngIf="getUsuario().invalid && (getUsuario().touched || getUsuario().dirty)"
+              >Este campo es obligatorio</small>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Clave:</label>
+              <input type="password" formControlName="clave" class="form-control" placeholder="Digite su clave">
+              <small 
+              class="text-danger"
+              *ngIf="getClave().invalid && (getClave().touched || getClave().dirty)"
+              >Este campo es obligatorio</small>
+            </div>
+            <button type="submit" class="btn btn-block btn-primary">Iniciar Session</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
