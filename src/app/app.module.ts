@@ -23,6 +23,7 @@ import {
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LocationStrategy, HashLocationStrategy, APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   imports: [
@@ -43,7 +44,11 @@ import { HttpClientModule } from '@angular/common/http';
     AdminLayoutComponent,
 
   ],
-  providers: [],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy},
+    { provide: APP_BASE_HREF, useValue: '/'},
+],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
