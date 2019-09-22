@@ -47,4 +47,11 @@ export class AuthService {
     localStorage.removeItem("token")
     this.route.navigate(["/auth"])
   }
+
+  public isLoggin(): boolean {
+    if (localStorage.getItem("token")) {
+      return true;
+    }
+    return false;
+  }
 }

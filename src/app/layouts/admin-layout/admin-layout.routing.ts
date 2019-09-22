@@ -8,6 +8,7 @@ import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
+import { SessionGuard } from 'app/session.guard';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -63,6 +64,7 @@ export const AdminLayoutRoutes: Routes = [
     {
         path:'principal', 
         loadChildren:
-        '../../pages/pagina-principal/pagina-principal.module#PaginaPrincipalModule'
+        '../../pages/pagina-principal/pagina-principal.module#PaginaPrincipalModule',
+        canActivate: [SessionGuard]
     }
 ];
