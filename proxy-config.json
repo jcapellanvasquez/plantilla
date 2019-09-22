@@ -1,7 +1,11 @@
 {
-    "/api": {
-        "target": "http://localhost:80/backend/public/",
+    "/api/*": {
+        "target": "http://localhost:80",
         "secure": false,
-        "changeOrigin": true
+        "changeOrigin": true,
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/api": ""
+        }
     }
 }

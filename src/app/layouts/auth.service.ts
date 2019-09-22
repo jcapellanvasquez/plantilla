@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {map} from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -9,18 +9,28 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  private url: string = "http://localhost/backend/public/index.php?/api/login/authenticate";
+  private url: string = "/api/backend/public/login/authenticate";
 
   constructor(private http: HttpClient, private route: Router) {
 
     
    }
 
+  // public getSessionToken(usuario: string, clave: string):Observable<any> {
+  //   //return this.http.post(this.url, {user: {usuario:usuario,clave:clave}})
+  //   return this.http.get("/api/backend/public/index.php?/welcome/get_users")
+  //   .pipe(map((data:any[]) => data.find(item=> item["clave"] === clave && item["usuario"]===usuario)))
+  // }
+
   public getSessionToken(usuario: string, clave: string):Observable<any> {
-    //return this.http.post(this.url, {user: {usuario:usuario,clave:clave}})
-    return this.http.get("http://localhost/backend/public/index.php?/welcome/get_users")
-    .pipe(map((data:any[]) => data.find(item=> item["clave"] === clave && item["usuario"]===usuario)))
-  }
+      //return this.http.post(this.url, {user: {usuario:usuario,clave:clave}})
+      let params: FormData = new FormData()
+
+      params.append("usuario", usuario);
+      params.append("password", clave);
+      
+      return this.http.post(this.url,params)
+  }  
 
   public setTokenInStore(token: string) {
     localStorage.setItem("token",token)

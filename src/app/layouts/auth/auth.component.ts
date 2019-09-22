@@ -36,7 +36,7 @@ export class AuthComponent implements OnInit {
         ).subscribe((data)=>{
           
             if (data) {
-              this.authService.setTokenInStore(btoa(JSON.stringify(data)))
+              this.authService.setTokenInStore(data["response"])
               this.errorMsg = ""
               this.route.navigate(["/principal"])
             } else {
