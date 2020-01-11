@@ -1,0 +1,38 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="this.form" (ngSubmit)="save()">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <p id="emailHelp"
+               class="form-text text-danger"
+               *ngIf="this.getEmail().touched && this.getEmail().invalid"
+        >
+          error
+        </p>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" formControlName="ck" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div>
+      <div class="form-group form-check">
+        <input formControlName="edad" name="edad" type="number" class="form-check-input" id="exampleCheck3">
+        <label  class="form-check-label" for="exampleCheck1">Edad</label>
+        <p id="emailHelp1"
+           class="form-text text-danger"
+           *ngIf="this.getEdad().touched && this.getEdad().invalid"
+        >
+          {{this.getEdad().errors | json}}
+        </p>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    {{this.form.value | json}}
+
+  </div>
+</div>
