@@ -43,6 +43,7 @@ import { ChartsModule } from 'ng2-charts';
 import {CalendarModule} from 'primeng/calendar';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 @NgModule({
   imports: [
@@ -59,6 +60,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     TabsModule.forRoot(),
     ChartsModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+
   ],
   declarations: [
     AppComponent,

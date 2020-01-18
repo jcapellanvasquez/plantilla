@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { EjemploServicioRoutingModule } from './ejemplo-servicio-routing.module';
-import { EjemploServicioComponent } from './ejemplo-servicio/ejemplo-servicio.component';
+import {EjemploServicioRoutingModule} from './ejemplo-servicio-routing.module';
+import {EjemploServicioComponent} from './ejemplo-servicio/ejemplo-servicio.component';
 import {HttpClientModule} from '@angular/common/http';
-import { EjemploFormComponent } from './ejemplo-form/ejemplo-form.component';
+import {EjemploFormComponent} from './ejemplo-form/ejemplo-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 
 @NgModule({
@@ -14,7 +15,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     CommonModule,
     EjemploServicioRoutingModule,
     FormsModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    ProgressSpinnerModule
+
+  ],
+  exports: []
 })
-export class EjemploServicioModule { }
+export class EjemploServicioModule {
+}
