@@ -24,7 +24,7 @@ export class InteraccionesComponent implements OnInit {
     public data$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
 
-    constructor(private dataSource: DataSourceService, public dialogService: DialogService,public router: Router ) {
+    constructor(public dataSource: DataSourceService, public dialogService: DialogService,public router: Router ) {
     }
 
     ngOnInit() {

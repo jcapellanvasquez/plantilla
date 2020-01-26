@@ -4,12 +4,13 @@ import {Observable} from 'rxjs';
 import {RequestModel, UsuarioModel, UtilsFunctions} from '../utils';
 import {map, tap} from 'rxjs/operators';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {environment} from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class LoginService {
-
+    private url: string = environment.apiUrl;
     private request: RequestModel<UsuarioModel> = new RequestModel<UsuarioModel>(new UsuarioModel());
 
     private jtwService = new JwtHelperService()
@@ -19,7 +20,7 @@ export class LoginService {
 
     public getToken(credenciales: UsuarioModel): Observable<RequestModel<UsuarioModel>> {
         this.request.setData(credenciales);
-        return this.http.post<RequestModel<UsuarioModel>>('api/login/get_token', this.request).pipe(
+        return this.http.post<RequestModel<UsuarioModel>>(this.url+'/api/login/get_token', this.request).pipe(
             map((rs: RequestModel<UsuarioModel>) => {
                 // let rs1: RequestModel<UsuarioModel> = new RequestModel<UsuarioModel>()
                 // rs1 = Object.assign(new RequestModel<UsuarioModel>(),rs)

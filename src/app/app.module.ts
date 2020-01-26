@@ -49,6 +49,11 @@ import {JwtModule} from '@auth0/angular-jwt';
 import {P403Component} from './views/error/p403/p403.component';
 import {JWTTokenInterceptor} from './utils/jwttoken.interceptor';
 
+export function tokenGetter() {
+    return localStorage.getItem('token');
+}
+
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -68,10 +73,8 @@ import {JWTTokenInterceptor} from './utils/jwttoken.interceptor';
         ReactiveFormsModule,
         JwtModule.forRoot({
             config: {
-                tokenGetter: () => {
-                    return localStorage.getItem('token');
-                },
-                whitelistedDomains: ['localhost:8080']
+                tokenGetter: tokenGetter,
+                whitelistedDomains: ['209.239.122.187:8080']
             }
         })
 

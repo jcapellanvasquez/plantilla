@@ -21,7 +21,7 @@ export class ClienteComponent implements OnInit {
     ];
 
 
-    constructor(private dataSource: DataSourceService, public dialogService: DialogService) {
+    constructor(public dataSource: DataSourceService, public dialogService: DialogService) {
     }
 
     ngOnInit() {
