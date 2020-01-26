@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-12">
+
+        <p-panel
+                [header]="'Listado de clientes'"
+        >
+            <ag-grid-angular
+                style="width: 100%; height: 500px;"
+                class="ag-theme-balham"
+                [rowData]="this.dataSource.clientes$ | async"
+                [columnDefs]="columnDefs"
+                [rowSelection]="'single'"
+                (rowClicked)="selected($event)"
+            >
+            </ag-grid-angular>
+            <p-toolbar>
+
+                <div class="ui-toolbar-group-right">
+                    <button (click)="nuevo()" pButton type="button" label="Nuevo" icon="pi pi-plus"></button>
+                    <button (click)="dataSource.getClientes()" pButton type="button" label="Buscar" icon="pi pi-search" class="ui-button-secondary"></button>
+                </div>
+            </p-toolbar>
+        </p-panel>
+    </div>
+</div>

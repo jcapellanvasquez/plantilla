@@ -1,0 +1,92 @@
+<p-blockUI [blocked]="isBlocked" [target]="pnl">
+    <i class="fa fa-spinner fa-spin fa-5x text-primary" style='position:absolute; top:50%;left:50%'></i>
+</p-blockUI>
+<form [formGroup]="this.form" (ngSubmit)="save()">
+    <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-8 col-xl-8 col-12">
+
+            <p-panel
+                #pnl
+                [header]="'Nueva interacción'"
+            >
+
+                <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+                    <div class="ui-grid-row">
+                        <div class="ui-g-12">
+                            <p-messages [(value)]="msgs"></p-messages>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-g-12">
+                            <p-listbox
+                                    [options]="options"
+                                    formControlName="clienteId"
+                                    [listStyle]="{'max-height':'250px'}"
+                                    checkbox="true"
+                                    filter="true"
+                            >
+                                <p-header>
+                                    <i class="fa fa-users"></i>
+                                    Clientes
+                                </p-header>
+                            </p-listbox>
+                        </div>
+                    </div>
+
+                    <div class="ui-grid-row">
+                        <div class="ui-g-12">
+                            <div class="ui-grid-col-12">
+                                <p-message
+                                        severity="error"
+                                        text="Seleccione un cliente"
+                                        *ngIf="!form.controls['clienteId'].valid && form.controls['clienteId'].dirty &&  form.controls['clienteId'].errors?.required"
+                                ></p-message>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui-grid-row">
+                        <div class="ui-g-12">
+                            <h3 class="mt-2">Notas</h3>
+                            <textarea
+                                    pInputTextarea
+                                    formControlName="memo"
+                                    [rows]="5"
+                                    [cols]="30"
+                                    autoResize="true"
+                            ></textarea>
+                        </div>
+                    </div>
+
+                    <div class="ui-grid-row">
+                        <div class="ui-g-12">
+                            <div class="ui-grid-col-12">
+                                <p-message
+                                        severity="error"
+                                        text="Este campo es obligatorio"
+                                        *ngIf="!form.controls['memo'].valid && form.controls['memo'].dirty && form.controls['memo'].errors?.required"
+                                ></p-message>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <p-toolbar>
+
+                    <div class="ui-toolbar-group-right">
+                        <button type="submit" pButton icon="pi pi-check" label="Guardar" class="mr-2 "></button>
+                        <button
+                                (click)="cancelar()"
+                                pButton
+                                type="button"
+                                label="Cancelar"
+                                icon="pi pi-times"
+                                class="ui-button-secondary"
+                        ></button>
+                    </div>
+                </p-toolbar>
+            </p-panel>
+        </div>
+    </div>
+
+</form>

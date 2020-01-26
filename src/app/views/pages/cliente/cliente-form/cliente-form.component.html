@@ -1,0 +1,80 @@
+<form [formGroup]="this.form" (ngSubmit)="save()">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+        <div class="ui-grid-row">
+            <div class="ui-g-12">
+                <p-messages [(value)]="msgs"></p-messages>
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
+                    <input formControlName="nombre" type="text" pInputText placeholder="Nombre">
+                </div>
+            </div>
+            <div class="ui-grid-col">
+                <p-message
+                        severity="error"
+                        text="Campo requerido"
+                        *ngIf="!form.controls['nombre'].valid && form.controls['nombre'].dirty"
+                ></p-message>
+            </div>
+        </div>
+
+        <div class="ui-grid-row">
+            <div class="ui-grid-col">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon"><i class="icon-note"></i></span>
+                    <input formControlName="email" type="text" pInputText placeholder="Correo">
+                </div>
+            </div>
+            <div class="ui-grid-col">
+                <p-message
+                        severity="error"
+                        text="Campo requerido"
+                        *ngIf="!form.controls['email'].valid && form.controls['email'].dirty && form.controls['email'].errors?.required"
+                ></p-message>
+                <p-message
+                        severity="error"
+                        text="Correo invalido"
+                        *ngIf="!form.controls['email'].valid && form.controls['email'].dirty && form.controls['email'].errors?.email"
+                ></p-message>
+            </div>
+        </div>
+
+        <div class="ui-grid-row">
+            <div class="ui-grid-col">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon"><i class="icon-phone"></i></span>
+                    <input formControlName="telefono" type="text" pInputText placeholder="Teléfono">
+                </div>
+            </div>
+            <div class="ui-grid-col">
+                <p-message
+                        severity="error"
+                        text="Campo requerido"
+                        *ngIf="!form.controls['telefono'].valid && form.controls['telefono'].dirty"
+                ></p-message>
+            </div>
+        </div>
+
+
+        <div class="ui-g-12">
+            <div class="ui-inputgroup">
+                <p-checkbox formControlName="activo" binary="true" value="Activo" label="Activo"></p-checkbox>
+            </div>
+        </div>
+        <div class="ui-g-12 ui-g-">
+            <div class="ui-inputgroup justify-content-end">
+                <button type="submit" pButton icon="pi pi-check" label="Guardar" class="mr-2 "></button>
+                <button type="button"
+                        (click)="close()"
+                        pButton
+                        icon="pi pi-times"
+                        class="ui-button-secondary"
+                        label="Cerrar"
+                ></button>
+            </div>
+        </div>
+    </div>
+</form>

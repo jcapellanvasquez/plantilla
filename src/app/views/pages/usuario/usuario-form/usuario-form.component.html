@@ -1,0 +1,90 @@
+<form [formGroup]="this.form" (ngSubmit)="save()">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+
+        <p-messages [(value)]="msgs"></p-messages>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
+                    <input formControlName="nombre" type="text" pInputText placeholder="Nombre">
+                </div>
+            </div>
+            <div class="ui-grid-col">
+                <p-message
+                        severity="error"
+                        text="Campo requerido"
+                        *ngIf="!form.controls['nombre'].valid && form.controls['nombre'].dirty"
+                ></p-message>
+            </div>
+        </div>
+
+        <div class="ui-grid-row">
+            <div class="ui-grid-col">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
+                    <input formControlName="apellido" type="text" pInputText placeholder="Apellido">
+                </div>
+            </div>
+            <div class="ui-grid-col">
+                <p-message
+                        severity="error"
+                        text="Campo requerido"
+                        *ngIf="!form.controls['apellido'].valid && form.controls['apellido'].dirty"
+                ></p-message>
+            </div>
+        </div>
+
+        <div class="ui-grid-row">
+            <div class="ui-grid-col">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
+                    <input formControlName="username" type="text" pInputText placeholder="Usuario">
+                </div>
+            </div>
+            <div class="ui-grid-col">
+                <p-message
+                        severity="error"
+                        text="Campo requerido"
+                        *ngIf="!form.controls['username'].valid && form.controls['username'].dirty"
+                ></p-message>
+            </div>
+        </div>
+
+        <div class="ui-grid-row">
+            <div class="ui-grid-col">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon"><i class="pi pi-key"></i></span>
+                    <input formControlName="password" type="password" pInputText placeholder="Clave">
+                </div>
+            </div>
+
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon"><i class="pi pi-key"></i></span>
+                    <input formControlName="cpassword" type="password" pInputText placeholder="Confirmar clave">
+                </div>
+            </div>
+            <div class="ui-grid-col">
+                <p-message
+                        severity="error"
+                        text="Claves no coninciden"
+                        *ngIf="form.errors?.samePassword !=null && !form.errors?.samePassword"
+                ></p-message>
+            </div>
+        </div>
+        <div class="ui-g-12 ui-g-">
+            <div class="ui-inputgroup justify-content-end">
+                <button type="submit" pButton icon="pi pi-check" label="Guardar" class="mr-2 "></button>
+                <button type="button"
+                        (click)="close()"
+                        pButton
+                        icon="pi pi-times"
+                        class="ui-button-secondary"
+                        label="Cerrar"
+                ></button>
+            </div>
+        </div>
+    </div>
+</form>
