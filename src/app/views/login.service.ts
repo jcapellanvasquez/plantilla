@@ -19,7 +19,7 @@ export class LoginService {
 
     public getToken(credenciales: UsuarioModel): Observable<RequestModel<UsuarioModel>> {
         this.request.setData(credenciales);
-        return this.http.post<RequestModel<UsuarioModel>>('/api/login/get_token', this.request).pipe(
+        return this.http.post<RequestModel<UsuarioModel>>('api/login/get_token', this.request).pipe(
             map((rs: RequestModel<UsuarioModel>) => {
                 // let rs1: RequestModel<UsuarioModel> = new RequestModel<UsuarioModel>()
                 // rs1 = Object.assign(new RequestModel<UsuarioModel>(),rs)
